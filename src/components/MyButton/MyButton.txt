@@ -1,0 +1,25 @@
+import {Button} from 'react-bootstrap';
+import IMyButton, {buttonSize, buttonType} from "../../interfaces/MyButton";
+
+const MyButton = ({
+                      active = false,
+                      disabled = false,
+                      size = buttonSize.sm,
+                      type = buttonType.button,
+                      variant = 'primary',
+                      bsPrefix = 'btn',
+                      handler,
+                      text = 'Button'
+                  }: IMyButton) => {
+
+    return <Button active={active}
+                   disabled={disabled}
+                   size={size}
+                   type={type}
+                   variant={variant}
+                   bsPrefix={bsPrefix}
+                   handler={() => {
+                   }}>{text}</Button>
+}
+
+export default MyButton;

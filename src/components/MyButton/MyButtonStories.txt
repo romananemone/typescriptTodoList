@@ -1,0 +1,114 @@
+import React from "react";
+import {Meta, Story} from "@storybook/react";
+import MyButton from "./MyButton.txt";
+import IMyButton, {buttonSize} from "../../interfaces/MyButton";
+
+export default {
+    component: MyButton,
+    title: "My Button",
+    argTypes: {handler: {action: 'handler action'}},
+} as Meta;
+
+const Template: Story<IMyButton> = (args) => <MyButton {...args} />;
+
+export const Default = Template.bind({});
+
+export const Disabled = Template.bind({});
+Disabled.args = {
+    disabled: true,
+}
+
+export const Small = Template.bind({});
+Small.args = {
+    size: buttonSize.sm,
+}
+
+export const Large = Template.bind({});
+Large.args = {
+    size: buttonSize.lg,
+}
+
+export const primary = Template.bind({});
+primary.args = {
+    variant: 'primary',
+}
+
+export const secondary = Template.bind({});
+secondary.args = {
+    variant: 'secondary',
+}
+
+export const success = Template.bind({});
+success.args = {
+    variant: 'success',
+}
+
+export const danger = Template.bind({});
+danger.args = {
+    variant: 'danger',
+}
+
+export const warning = Template.bind({});
+warning.args = {
+    variant: 'warning',
+}
+
+export const info = Template.bind({});
+info.args = {
+    variant: 'info',
+}
+
+export const dark = Template.bind({});
+dark.args = {
+    variant: 'dark',
+}
+
+export const light = Template.bind({});
+light.args = {
+    variant: 'light',
+}
+
+export const link = Template.bind({});
+link.args = {
+    variant: 'link',
+}
+
+export const outlinePrimary = Template.bind({});
+outlinePrimary.args = {
+    variant: 'outline-primary',
+}
+
+export const outlineSecondary = Template.bind({});
+outlineSecondary.args = {
+    variant: 'outline-secondary',
+}
+
+export const outlineSuccess = Template.bind({});
+outlineSuccess.args = {
+    variant: 'outline-success',
+}
+
+export const outlineDanger = Template.bind({});
+outlineDanger.args = {
+    variant: 'outline-danger',
+}
+
+export const outlineWarning = Template.bind({});
+outlineWarning.args = {
+    variant: 'outline-warning',
+}
+
+export const outlineInfo = Template.bind({});
+outlineInfo.args = {
+    variant: 'outline-info',
+}
+
+export const outlineDark = Template.bind({});
+outlineDark.args = {
+    variant: 'outline-dark',
+}
+
+export const outlineLight = Template.bind({});
+outlineLight.args = {
+    variant: 'outline-light',
+}

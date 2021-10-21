@@ -1,26 +1,33 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import TodoList from "./pages/TodoList/TodoList";
+import TodosArchive from "./pages/TodoArchive/TodosArchive";
+import Home from './components/Home/Home';
+import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import Navigation from "./components/Navigation/Navigation";
+import LangSwitch from "./components/LangSwitch/LangSwitch";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+function App(): JSX.Element {
+    return (
+        <div>
+            <Router>
+                <div className='d-flex justify-content-around p-3'>
+                    <Navigation/>
+                    <LangSwitch/>
+                </div>
+                <Switch>
+                    <Route exact path="/">
+                        <Home/>
+                    </Route>
+                    <Route exact path="/todos">
+                        <TodoList/>
+                    </Route>
+                    <Route exact path="/archive">
+                        <TodosArchive/>
+                    </Route>
+                </Switch>
+            </Router>
+        </div>
+    )
 }
 
 export default App;
