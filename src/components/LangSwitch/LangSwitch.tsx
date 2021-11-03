@@ -3,7 +3,7 @@ import React, {useEffect, useState} from "react";
 import {useTranslation} from 'react-i18next';
 
 const LangSwitch = (): JSX.Element => {
-    const [key, setKey] = useState('EN');
+    const [key, setKey] = useState('en');
     const {i18n} = useTranslation();
 
     const changeLanguage = (language: string) => {

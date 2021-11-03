@@ -29,9 +29,7 @@ const TodoListView = (props: Todos): JSX.Element => {
                         {inProgressTodos.map((todo: TodoType) =>
                             <TodoItemView
                                 key={todo.id}
-                                title={todo.title}
-                                completed={todo.completed}
-                                id={todo.id}
+                                {...todo}
                                 removeTodoWrapper={removeTodoWrapper}
                                 toggleTodoWrapper={toggleTodoWrapper}/>)}
                     </ListGroup>
@@ -41,9 +39,7 @@ const TodoListView = (props: Todos): JSX.Element => {
                         {finishedTodos.map((todo: TodoType) =>
                             <TodoItemView
                                 key={todo.id}
-                                title={todo.title}
-                                completed={todo.completed}
-                                id={todo.id}
+                                {...todo}
                                 removeTodoWrapper={removeTodoWrapper}
                                 toggleTodoWrapper={toggleTodoWrapper}/>)}
                     </ListGroup>

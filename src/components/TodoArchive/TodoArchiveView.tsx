@@ -29,6 +29,9 @@ const TodoArchiveView = ({todosArchive, restoreTodoWrapper}: ITodosArchive) => {
                 Header: t('archive.completed'),
                 accessor: 'completed',
             },
+            {Header: t('archive.startDate'), accessor: 'startDate'},
+            {Header: t('archive.endDate'), accessor: 'endDate'},
+            {Header: t('archive.timeSpent'), accessor: 'timeSpent'},
             {
                 Header: t('archive.restore'),
                 accessor: 'restore',

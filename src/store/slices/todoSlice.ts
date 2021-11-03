@@ -1,6 +1,8 @@
 import {createSlice, PayloadAction, createAsyncThunk} from '@reduxjs/toolkit'
 import {todoApi} from "../../services/serviceApi";
 import {TodoType} from "../../types/Todo";
+import {getMaxId} from '../../helpers/maxIdFromTodosAndArchive';
+import {inProgressToCompleted, finishedToInProgress, todoStartTimer} from '../../helpers/todoTime';
 
 type TodosSliceReducer = {
     isFetching: boolean;
@@ -27,11 +29,12 @@ export const todosSlice = createSlice({
     initialState,
     reducers: {
         addTodo: (state, action: PayloadAction<string>) => {
-            const lastTodoId = state.todosList[state.todosList.length - 1].id || 0;
-            const newTodoWithId = {id: lastTodoId + 1, title: action.payload, completed: false}
+            const lastTodoId = getMaxId(state.todosList, state.todosArchive);
+            const newTodoWithId = {id: lastTodoId + 1, title: action.payload, completed: false};
+            const newTodoWithStartTime = todoStartTimer(newTodoWithId);
             return {
                 ...state,
-                todosList: [...state.todosList, newTodoWithId]
+                todosList: [...state.todosList, newTodoWithStartTime]
             };
         },
         removeTodo: (state, action: PayloadAction<number>) => {
@@ -42,9 +45,11 @@ export const todosSlice = createSlice({
             };
         },
         restoreTodo: (state, action: PayloadAction<number>) => {
+            const todoToRestore = state.todosArchive.find(todo => todo.id === action.payload);
+            const updatedTodo = finishedToInProgress(todoToRestore);
             return {
                 ...state,
-                todosList: [...state.todosList, ...state.todosArchive.filter(todo => todo.id === action.payload)],
+                todosList: [...state.todosList, {...updatedTodo, completed: false}],
                 todosArchive: [...state.todosArchive.filter(todo => todo.id !== action.payload)]
             }
         },
@@ -52,11 +57,17 @@ export const todosSlice = createSlice({
             return {
                 ...state,
                 todosList: [...state.todosList.map(todo => {
-                    if (todo.id === action.payload) {
-                        return {...todo, completed: !todo.completed}
+                        if (todo.id === action.payload) {
+                            if (todo.completed) {
+                                return {...finishedToInProgress(todo), completed: false};
+                            }
+                            if (!todo.completed) {
+                                return {...inProgressToCompleted(todo), completed: true};
+                            }
+                        }
+                        return todo;
                     }
-                    return todo;
-                })]
+                )]
             }
         }
     },

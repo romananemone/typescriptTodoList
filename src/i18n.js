@@ -21,6 +21,9 @@ i18n
                     todos: {
                         title: 'Todo List',
                         button: 'Add new todo',
+                        startDate: 'Start date',
+                        endDate: 'End date',
+                        timeSpent: 'Time spent',
                         placeholder: 'Enter todo text',
                         ok: 'Ok',
                         cancel: 'Cancel'
@@ -28,6 +31,9 @@ i18n
                     archive: {
                         title: 'Title',
                         completed: 'Completed',
+                        startDate: 'Start date',
+                        endDate: 'End date',
+                        timeSpent: 'Time spent',
                         restore: 'Restore from archive',
                         restoreButton: 'Restore'
                     }
@@ -43,12 +49,18 @@ i18n
                         title: 'Список тодо',
                         button: 'Добавить тодо',
                         placeholder: 'Введите тело тодо',
+                        startDate: 'Дата начала',
+                        endDate: 'Дата завершения',
+                        timeSpent: 'Затраченное время',
                         ok: 'Ок',
                         cancel: 'Отмена'
                     },
                     archive: {
                         title: 'Название',
                         completed: 'Завершен',
+                        startDate: 'Дата начала',
+                        endDate: 'Дата завершения',
+                        timeSpent: 'Затраченное время',
                         restore: 'Восстановить из архива',
                         restoreButton: 'Восстановить'
                     }

@@ -1,9 +1,12 @@
 import Todo from "../../interfaces/Todo";
 import {memo} from "react";
 import {ListGroup, Form, Button} from 'react-bootstrap';
+import {useTranslation} from "react-i18next";
 
 const TodoItemView = (props: Todo): JSX.Element => {
-    const {title, completed, id, removeTodoWrapper, toggleTodoWrapper} = props;
+    const {title, completed, id, startDate, endDate, timeSpent, removeTodoWrapper, toggleTodoWrapper} = props;
+    const {t} = useTranslation();
+
     return (<ListGroup.Item
         as="li"
         className="d-flex justify-content-between align-items-start"
@@ -15,6 +18,9 @@ const TodoItemView = (props: Todo): JSX.Element => {
                 type='checkbox'
                 label={title}
             />
+            <div>{startDate ? `${t('todos.startDate')}: ${startDate}` : null }</div>
+            <div>{endDate ? `${t('todos.endDate')}: ${endDate}` : null }</div>
+            <div>{timeSpent ? `${t('todos.timeSpent')}: ${timeSpent}` : null}</div>
         </Form>
         <Button onClick={() => removeTodoWrapper(id)} variant="outline-secondary">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-trash"
