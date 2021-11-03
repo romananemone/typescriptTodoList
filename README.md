@@ -1,8 +1,5 @@
-# Getting Started with Create React App
-
+# Overview
 This is a simple Todo list, created with using technologies and libraries such as React, Redux, Reselect, Typescript, i18n, React-Table, Momentjs, Axios, React-bootstrap.
-
-## Overview
 Project contains 3 pages - Home, Todos and Archive.
 
 ### Home
